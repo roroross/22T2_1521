@@ -23,11 +23,11 @@ col_loop:
 	li 	$v0, 	11			# print char 
 	syscall 
 
-
+	# e.g. if we dont save our $ra on the stack, we would be in am
+	#infinite loop from here to the end cose jr ra will jump to here! 
 	jal 	function2
-	blah 
+	#blah 
 
-	
 	addi	$t1, 	$t1, 	1		#col ++
 	j 	col_loop
 col_loop_end:
@@ -43,10 +43,10 @@ row_loop_end:
 	li 	$v0, 	0
 	jr 	$ra 				# rturn 0 :)
 
-############
+############ stack frame example 
 functio2:
-	blah
-	jr $ra
+	# 	blah
+	jr 	$ra
 
 .data
 flag:

@@ -1,3 +1,5 @@
+#the clean q5 - for monday and thursday class.
+# also an example for what we are expecting for good style in MIPS!
 main:
 main_prol:
     begin			        # begin a new stack frame
@@ -32,8 +34,8 @@ sum4_pro:
 	push	$ra		        # | $ra
     push    $s0             # c in s0
     push    $s1             # d in s1
-    push    $s2             # e
-    push    $s3             # f
+    push    $s2             # e in s2
+    push    $s3             # f in s3
                             # a0 = a, #a1 = b 
     move    $s0,    $a2     # c in s0
     move    $s1,    $a3     # d in s1

@@ -1,6 +1,7 @@
+# our code on monday
 main:
 main_prol:
-    	begin			# begin a new stack frame
+   	begin			# begin a new stack frame
 	push	$ra		# | $ra
 
 main_body:
@@ -10,7 +11,7 @@ main_body:
 	li      $a3,    19
 	jal     sum4
 
-	move    $a0,    $v0      # a0 is sum4(11, 13, 17, 19);
+	move    $a0,    $v0     # a0 is sum4(11, 13, 17, 19);
 	li      $v0,    1
 	syscall 
 
@@ -19,7 +20,7 @@ main_body:
 	syscall 
 
 main_epilogue:
-	pop	    	$ra	# | $ra
+	pop	$ra		# | $ra
 	end			# ends the current stack frame
 
 	li	$v0, 	0
@@ -37,7 +38,7 @@ sum4_pro:
 				# a0 = a, #a1 = b 
 
 sum4_body:
-	jal     sum2    #sum2(a,b)      
+	jal     sum2    	#sum2(a,b)      
 	move    $s0,    $v0     # s0 = e
 
 	move    $s1,    $a2     #c
