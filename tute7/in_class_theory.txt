@@ -1,0 +1,108 @@
+q2
+when to use it? 
+- if told it is a signed integer, or told it is a 2's complement.
+- if it was an unsigned int, then the 1 bit at the front means its a much larger postive number.
+
+
+two complement - flip the bits, plus one
+
+0xFFFF -    1111 1111 1111 1111
+flip bits - 0000 0000 0000 0000
+plus 1 -    0000 0000 0000 0001
+
+so, 0xFFFF = -1
+
+v. 
+0x8000 -    1000 0000 0000 0000 = 
+flip bits - 0111 1111 1111 1111
+plus 1 -    1000 0000 0000 0000
+so0x8000 = -2^15 = -32768
+
+although we came back to the og position, we dont do 2s complement again.
+only account for signed bit at the beginnign
+
+q3) Give a representation for each of the following decimal values in 16-bit twos-complement bit-strings. Show the value in binary, octal and hexadecimal.
+
+vii)
+-100        : -0000 0000 0110 0100
+flip bits   : -1111 1111 1001 1011
+plus one    :  1111 1111 1001 1100
+
+q4 )
+Single precision floating point (IEEE 754) - 32 bitsbreakdown: (MSB - LSB)
+    sign        : 1 bit 
+    exponent    : 8 bits
+    fraction/mantissa   : 23 bits (a value smaller than one). LHS is 0.5, the 0.25 ....
+
+Value:  (-1)^sign x (1 + frac) x 2^(exponent - bias)
+bias is 127, allowing for power range of (-127 - 128) 
+
+exceptions:
+Nan - Not a Number - anything with the below characteristics
+    Exponent = 0xFF or 1111 1111
+    Fraction != 0   
+    sign = 1 or 0
+
+Infinity
+    Exponent = 0xFF or 1111 1111
+    Fraction = 0   
+    sign = 0 for +INF, 1 for -INF 
+
+zero
+    Exponent = 0
+    Fraction = 0
+    Sign = 1 or 0
+
+Denormal / Subnormal 
+    Allow for smaller numbers
+    Exponent is 0, and mantissa(part after the decimal pt) leading bit is 0
+    Value: (-1)^sign x (0 + frac) x 2^(-127)
+
+Value:  (-1)^sign x (1 + frac) x 2^(exponent - bias)
+q4)
+c ) 0 01111111 10000000000000000000000
+sign = 0, +
+exp = 127
+fraction = 0.5
+
+ans = Value:  (-1)^0 x (1 + 0.5) x 2^(127 - 127)
+= 1 x 1.5 x 2^0
+= 1.5
+
+e ) 0 01111110 11111111111111111111111
+sign = 0, +
+exp = 126
+fraction = 0.5 + 0.25 + 0.125 + 0.625 ......
+        = 0.99999999
+
+Value:  (-1)^0 x (1 +  0.99999999) x 2^(126 - 127)
+= 1 x 1.99999 x 2^(-1)
+= 1.99999 x 0.5
+= 0.999999
+
+f ) 0 10000000 01100000000000000000000
+sign = 0, +
+exp = 128
+fraction = 0.5 x 0 + 0.25 x 1 + 0.125 x 1
+= 0.375
+ans = (-1) ^ 0 x (1 + 0.375) x 2^(128 - 127) 
+= 1 x 1.375 x 2^1 
+= 2.75
+
+5 Convert the following decimal numbers into IEEE 754-encoded bit-strings:
+a) 2.5 = 1.25 x 2^1 
+= (1 + 0.25) x 2^(128 - 127)
+
+sign = 0
+exp = 128 = 1000 0000
+fract = 0.25 = = 01000000000000000000000
+
+d) 100 (how many times to divide it by 2 to get 1.sth)
+100 = 1.5625 x 2^(6) 
+    = (1+ 0.5625) x 2(133-127)
+
+sign = 0 +
+exp = 133 =  1000 0101
+fraction = 0.5626 = 0.5 + 0.0625 = 0.5 + 0.0625
+= 10010000000000000000000
+0 1000 0101 10010000000000000000000
