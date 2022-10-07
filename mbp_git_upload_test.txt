@@ -1,3 +1,5 @@
 Testing upload into 22t2 1521 github repo
 from the macbook pro clone.
 fri oct 7 2.25am
+
+2.26am: upload works. horray! 
